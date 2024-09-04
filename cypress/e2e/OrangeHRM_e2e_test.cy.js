@@ -5,13 +5,21 @@ describe('OrangeHRM End to End Testing', () => {
   const adminPassword = "admin123"
   const employeeDataFile = "employeeData.json" 
   function generateRandomPassword() {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lower = 'abcdefghijklmnopqrstuvwxyz';
+    const digits = '0123456789';
+    const symbols = '!@#$%^&*()_+';
+    
     let password = '';
-    for (let i = 0; i < 12; i++) {
-      password += chars.charAt(Math.floor(Math.random() * chars.length));
+    for (let i = 0; i < 2; i++) {
+        password += upper.charAt(Math.floor(Math.random() * upper.length));
+        password += lower.charAt(Math.floor(Math.random() * lower.length));
+        password += digits.charAt(Math.floor(Math.random() * digits.length));
+        password += symbols.charAt(Math.floor(Math.random() * symbols.length));
     }
+    
     return password;
-  }
+}
   function generateEmployeeId() {
     return Math.floor(1000 + Math.random() * 9000); 
   }
